@@ -1,1 +1,2 @@
-Ecommerce-React-Redux-shopping-cart
+# React Redux ecommerce Shopping cart
+# Step 1: Create React App
