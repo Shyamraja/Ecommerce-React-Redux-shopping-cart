@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 html{
   font-size: 60%;
   box-sizing: border-box;
@@ -10,6 +11,7 @@ body,
 body, 
 input, 
 select, 
+button,
 textarea {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
@@ -23,6 +25,9 @@ textarea {
   grid-template-rows: 5rem 1fr 5rem;
   grid-template-columns: 1fr;
   height: 100%;
+}
+a {
+  text-decoration: none;
 }
 a:hover{
   color: lightgreen;
@@ -41,6 +46,7 @@ header a{
 }
 main{
   grid-area: main;
+  background-color: rgb(232, 224, 240);
 }
 footer{
   grid-area:footer;
@@ -55,7 +61,7 @@ footer{
   flex-wrap: wrap;
 }
 .main{
-  flex: 3 40rem;
+  flex: 3 70rem;
 }
 .sidebar{
   flex: 1.3 23rem;
@@ -70,9 +76,9 @@ footer{
   list-style-type: none;
 }
 .products li{
-  flex: 0 1 30rem;
-  height: 38rem;
-  padding: 1 rem;
+  flex: 0 1 18rem;
+  height: 45rem;
+  padding: 2rem;
 }
 .product{
   display: flex;
@@ -81,8 +87,8 @@ footer{
   height: 100%;
 }
 .product img{
-  max-width: 30rem;
-  max-height: 26rem;
+  max-width: 35rem;
+  max-height: 35rem;
 }
 .product-price{
   display: flex;
@@ -109,4 +115,12 @@ footer{
 .button.primary{
   background-color: lightgreen;
 }
-
+.filter{
+  display: flex;
+  padding: 0.8rem;
+  margin: 0.8rem;
+  border-bottom: 0.2rem blueviolet solid;
+}
+.filter div{
+  flex: 0.3;
+}
