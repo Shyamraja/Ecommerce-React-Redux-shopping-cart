@@ -2,16 +2,32 @@ import React from "react";
 import data from "./data.json";
 import Products from "./components/Products";
 import Filter from "./components/Filter";
+import Cart from "./components/Cart";
 
 class App extends React.Component {
     constructor() {
       super();
       this.state = {
          products: data.products,
+         addedProductsInCart:[],
          size: "",
          sortPrice: "",
       };
     }
+    addToCart = (product) => {
+      const addedProductsInCart = this.state.addedProductsInCart.slice();
+      let alreadyInCart = false;
+      addedProductsInCart.forEach((item) => {
+        if (item._id === product._id) {
+          item.count++;
+          alreadyInCart = true;
+        }
+      });
+      if(!alreadyInCart){
+        addedProductsInCart.push({...product, count: 1 });
+      }
+      this.setState({ addedProductsInCart});
+    };
     sortingPriceOfProducts = (event) => {
       const sort = event.target.value;
       console.log(event.target.value);
@@ -35,7 +51,6 @@ class App extends React.Component {
        }));
     };
     filteringSizeOfProducts = (event) => {
-
       console.log(event.target.value);
       if (event.target.value === "") {
         this.setState({ size: event.target.value, products: data.products });
@@ -64,9 +79,14 @@ class App extends React.Component {
                    filterProductsSize={this.filteringSizeOfProducts}
                    sortProductsPrice={this.sortingPriceOfProducts}>
                 </Filter>
-                <Products products={this.state.products}></Products>
+                <Products 
+                products={this.state.products} 
+                addToCart={this.addToCart}>
+                </Products>
               </div>
-              <div className="sidebar">Cart Items</div>
+              <div className="sidebar">
+                <Cart addedProductsInCart={this.state.addedProductsInCart} />
+                </div>
            </div>
           </main>
           <footer>All right is reserved.</footer>
@@ -74,4 +94,4 @@ class App extends React.Component {
       );
    }
  }
- export default App;
+export default App;
