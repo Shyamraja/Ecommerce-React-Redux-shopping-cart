@@ -13,7 +13,7 @@ class App extends React.Component {
          size: "",
          sortPrice: "",
       };
-    }
+    }   
     addToCart = (product) => {
       const addedProductsInCart = this.state.addedProductsInCart.slice();
       let alreadyInCart = false;
@@ -23,10 +23,16 @@ class App extends React.Component {
           alreadyInCart = true;
         }
       });
-      if(!alreadyInCart){
+      if(!alreadyInCart) {
         addedProductsInCart.push({...product, count: 1 });
       }
-      this.setState({ addedProductsInCart});
+      this.setState({ addedProductsInCart });
+    };
+    removeFromCart = (product) => {
+      const addedProductsInCart = this.state.addedProductsInCart.slice();
+      this.setState({
+        addedProductsInCart: addedProductsInCart.filter((x) => x._id !== product._id),
+      });
     };
     sortingPriceOfProducts = (event) => {
       const sort = event.target.value;
@@ -80,18 +86,21 @@ class App extends React.Component {
                    sortProductsPrice={this.sortingPriceOfProducts}>
                 </Filter>
                 <Products 
-                products={this.state.products} 
-                addToCart={this.addToCart}>
+                   products={this.state.products} 
+                   addToCart={this.addToCart}>
                 </Products>
               </div>
               <div className="sidebar">
-                <Cart addedProductsInCart={this.state.addedProductsInCart} />
-                </div>
+                  <Cart 
+                    addedProductsInCart={this.state.addedProductsInCart} 
+                    removeFromCart={this.removeFromCart}
+                  />
+              </div>
            </div>
           </main>
           <footer>All right is reserved.</footer>
         </div>
       );
-   }
+    }
  }
 export default App;
