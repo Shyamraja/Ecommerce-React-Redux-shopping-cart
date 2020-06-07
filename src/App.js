@@ -9,30 +9,37 @@ class App extends React.Component {
       super();
       this.state = {
          products: data.products,
-         addedProductsInCart:[],
+         ProductsInCart: localStorage.getItem("ProductsInCart")
+         ? JSON.parse(localStorage.getItem("ProductsInCart"))
+         : [],
          size: "",
          sortPrice: "",
       };
     }   
     addToCart = (product) => {
-      const addedProductsInCart = this.state.addedProductsInCart.slice();
+      const ProductsInCart = this.state.ProductsInCart.slice();
       let alreadyInCart = false;
-      addedProductsInCart.forEach((item) => {
+      ProductsInCart.forEach((item) => {
         if (item._id === product._id) {
           item.count++;
           alreadyInCart = true;
         }
       });
       if(!alreadyInCart) {
-        addedProductsInCart.push({...product, count: 1 });
+        ProductsInCart.push({...product, count: 1 });
       }
-      this.setState({ addedProductsInCart });
+      this.setState({ ProductsInCart });
+      localStorage.setItem("ProductsInCart", JSON.stringify(this.state.ProductsInCart));
     };
     removeFromCart = (product) => {
-      const addedProductsInCart = this.state.addedProductsInCart.slice();
+      const ProductsInCart = this.state.ProductsInCart.slice();
       this.setState({
-        addedProductsInCart: addedProductsInCart.filter((x) => x._id !== product._id),
+        ProductsInCart: ProductsInCart.filter((x) => x._id !== product._id),
       });
+      localStorage.setItem(
+        "ProductsInCart", 
+        JSON.stringify(ProductsInCart.filter((x) => x._id !== product._id))
+        );
     };
     sortingPriceOfProducts = (event) => {
       const sort = event.target.value;
@@ -69,11 +76,14 @@ class App extends React.Component {
          });
        }
      };
+     createOrder = (order) => {
+       alert("Save Order for" + order.name);
+     };
     render() {
       return (
         <div className="grid-container">
           <header>
-            <a href="/">Ecommerce Shopping Cart</a>
+            <a href="/">WELCOME TO OUR EXPRESS SHOP</a>
           </header>
           <main>
             <div className="content">
@@ -92,8 +102,9 @@ class App extends React.Component {
               </div>
               <div className="sidebar">
                   <Cart 
-                    addedProductsInCart={this.state.addedProductsInCart} 
+                    ProductsInCart={this.state.ProductsInCart} 
                     removeFromCart={this.removeFromCart}
+                    createOrder={this.createOrder}
                   />
               </div>
            </div>

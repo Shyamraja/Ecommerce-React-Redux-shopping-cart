@@ -106,7 +106,7 @@ footer{
 .button{
   padding: 1rem;
   border: 0.1rem rgb(19, 11, 2) solid;
-  background-color:rgb(255, 255, 255);
+  background-color: red;
   cursor: pointer;
 }
 .button:hover{
@@ -114,6 +114,7 @@ footer{
 }
 .button.primary{
   background-color: lightgreen;
+  max-width: 15rem;
 }
 .filter{
   display: flex;
@@ -138,14 +139,13 @@ footer{
   list-style-type: none;
 }
 .cart-items img {
-  width: 5rem;
-  height: 10rem;
+  width: 8rem;
 }
-.cart-items li div{
-  padding: 5rem;
+.cart-items li {
+  display: flex;
 }
 .cart-items li div {
-  padding: 1.5rem;
+  padding: 0.5rem;
 }
 .cart-items li div:last-child {
   flex: 2;
@@ -153,4 +153,32 @@ footer{
 .right{
   padding-left: 10rem;
   text-align:right;
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.total > div{
+  font-size: 2.3rem;
+}
+.total > button {
+   flex: 6;
+}
+.form {
+  width:100%;
+}
+.form-container {
+  width: 100%;
+  padding: 0;
+}
+.form-container li {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+input{
+  padding: 1rem;
+  border: .2rem;
 }
