@@ -135,7 +135,7 @@ footer{
 }
 .cart-items {
   padding: 0;
-  width: 100%;
+  width: 80%;
   list-style-type: none;
 }
 .cart-items img {
@@ -158,7 +158,7 @@ footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 80%;
 }
 .total > div{
   font-size: 2.3rem;
@@ -167,7 +167,7 @@ footer{
    flex: 6;
 }
 .form {
-  width:100%;
+  width:80%;
 }
 .form-container {
   width: 100%;
