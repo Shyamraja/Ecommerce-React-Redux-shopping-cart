@@ -1,8 +1,11 @@
 import React from "react";
+import { Provider } from "react-redux";
 import data from "./data.json";
 import Products from "./components/Products";
 import Filter from "./components/Filter";
 import Cart from "./components/Cart";
+import store from "./store";
+
 
 class App extends React.Component {
     constructor() {
@@ -81,7 +84,8 @@ class App extends React.Component {
      };
     render() {
       return (
-        <div className="grid-container">
+      <Provider store={store}>
+         <div className="grid-container">
           <header>
             <a href="/">WELCOME TO OUR EXPRESS SHOP</a>
           </header>
@@ -111,6 +115,7 @@ class App extends React.Component {
           </main>
           <footer>All right is reserved.</footer>
         </div>
+      </Provider>  
       );
     }
  }
