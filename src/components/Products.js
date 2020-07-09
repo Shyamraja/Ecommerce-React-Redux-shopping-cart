@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import formatCurrency from "../util";
 import { connect } from 'react-redux';
 import {fetchProducts} from "../actions/productActions";
-
+import {addToCart} from "../actions/cartActions";
 
 class Products extends Component {
     constructor(props) {
@@ -11,9 +11,7 @@ class Products extends Component {
             product: null,
         };
     }
-    componentDidMount() {
-       this.props.fetchProducts();
-    }
+    
     render() {
         return (
             <div>             
@@ -46,7 +44,8 @@ class Products extends Component {
     }
 }
 export default connect((state)=> (
-    {products: state.products.filtereditems }
-    ),{
+    {products: state.products.filteredItems }),
+    {
     fetchProducts,
+    addToCart,
 })(Products);

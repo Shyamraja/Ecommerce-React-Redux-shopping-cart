@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import formatCurrency from "../util";
+import { connect } from "react-redux";
+import { removeFromCart } from "../actions/cartActions";
 
-export default class Cart extends Component {
+class Cart extends Component {
   constructor(props) {
      super(props);
      this.state = {
@@ -17,30 +19,30 @@ export default class Cart extends Component {
   };
   createOrder = (e) => {
     e.preventDefault();
-    const order = {
+     const order = {
           name: this.state.name,
           email: this.state.email,
           phone: this.state.phone,
           address: this.state.address,
-          ProductsInCart: this.props.cartItems,
-       };
+          cartItems: this.props.cartItems,
+      };
     this.props.createOrder(order);
   };
   render() {
-    const {ProductsInCart} = this.props;
+    const {cartItems} = this.props;
     return (
       <div>
-        {ProductsInCart.length === 0 ? (
+        {cartItems.length === 0 ? (
             <div className="cart cart-header">Please Add Products In The Cart</div>
         ) : (
             <div className="cart cart-header">
-             You have added {ProductsInCart.length} products in the cart{" "}
+             You have added {cartItems.length} products in the cart{" "}
            </div>
         )}
         <div>
           <div className="cart">
             <ul className="cart-items">
-              {ProductsInCart.map((item) => (
+              {cartItems.map((item) => (
                 <li key={item._id}>
                   <div>
                      <img src={item.image} alt={item.title}></img>
@@ -57,14 +59,14 @@ export default class Cart extends Component {
               ))}
             </ul>
           </div>
-          {ProductsInCart.length !== 0 && (
+          {cartItems.length !== 0 && (
             <div>
               <div className="cart">
                 <div className="total">
                   <div>
                     Total:{" "}
                     {formatCurrency(
-                       ProductsInCart.reduce((a, c) => a + c.price * c.count, 0)
+                       cartItems.reduce((a, c) => a + c.price * c.count, 0)
                     )}
                   </div>
                   <button
@@ -125,3 +127,10 @@ export default class Cart extends Component {
     );
   }
 }
+
+export default  connect(
+  (state) => ({
+    cartItems: state.cart.cartItems,
+}),
+removeFromCart
+)(Cart);

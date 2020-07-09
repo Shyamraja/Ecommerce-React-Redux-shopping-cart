@@ -1,9 +1,9 @@
 import { 
-    FETCH_PRODUCTS,
+     FETCH_PRODUCTS,
      FILTER_PRODUCTS_BY_SIZE,
      FILTER_PRODUCTS_BY_PRICE,
  } from "../types";
-import nodemon from "nodemon";
+//import nodemon from "nodemon";
  
 export const productsReducer = (state = {}, action) => {
     switch (action.type) {

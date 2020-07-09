@@ -1,13 +1,15 @@
-import {createStore, applyMiddleware, compose, combineReducers} from "redux";
+import { createStore, applyMiddleware, compose, combineReducers} from "redux";
 import { productsReducer } from "./reducers/productReducers";
+import { cartReducer } from "./reducers/cartReducers";
 
 const initialState = {};
-const ComposeEnhancer = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__  || compose;
 const store = createStore(
      combineReducers({
         products: productsReducer,
+        cart:cartReducer
      }),
      initialState,
-     ComposeEnhancer(applyMiddleware())
+     composeEnhancer(applyMiddleware())
 );
 export default store;  
