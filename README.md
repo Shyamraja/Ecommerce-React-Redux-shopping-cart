@@ -20,5 +20,14 @@ You can download and install requirements from the following links:
 
 - [Node](https://nodejs.org/en/)
 - [Mongodb](https://www.mongodb.com/) or [Mlab](https://www.mlab.com/)
+- [Express](https://expressjs.com/)
+
+After installing 
+ First you have to run server
+npm run server 
+then
+npm start
+
+you can see the app in the browser
 
 

@@ -39,6 +39,7 @@ app.delete("/api/products/:id", async(req, res)=>{
  const deletedProduct = await Product.findByIdAndDelete(req.params.id);
  res.send(deletedProduct);
 });
-
+/*testing git
+*/
 const port = process.env.PORT
 app.listen(port, () => console.log("serve at http://localhost:8000"));
