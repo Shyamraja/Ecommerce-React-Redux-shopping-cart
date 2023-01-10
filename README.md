@@ -1,6 +1,10 @@
 ## About The Project
 
-This application is an ecommerce application where admins can add products and users can view the products, add products in cart,remove from cart,proceed for checkout and make order. I am still updating this application.
+This application is an ecommerce application where admins can add products and users can view the products, add products in cart,remove from cart,proceed for checkout and make order. 
+Live link for the project is:
+https://onlinetshirtshop.netlify.app/
+
+I am still updating this application.
 
 ## Built With
 
